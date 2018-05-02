@@ -15,4 +15,10 @@ export class PropertyService {
     return this.dao.query(query, offset, limit);
   }
 
+  public getProperty(
+    id: string = ""
+  ): Promise<Property> {
+    return this.dao.getProperty(id);
+  }
+
 }

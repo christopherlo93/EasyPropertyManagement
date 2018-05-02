@@ -39,4 +39,10 @@ export class PropertyService {
       }
     });
   }
+
+  public getProperty(
+    id: string = ""
+  ): Observable<Property> {
+    return this.http.post<Property>(PROPERTIES_PATH + "/getProperty", {propertyId: id});
+  }
 }
