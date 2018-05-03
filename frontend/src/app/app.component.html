@@ -1,6 +1,16 @@
-<header class="w-100">
-  <h1 class="f1">
-    {{ title }}
-  </h1>
+<header class="w-100 pa3 ph5-ns bg-white">
+  <div class="db dt-ns mw9 center w-100">
+    <div class="db dtc-ns v-mid tl w-50">
+        <h1 class="f3">
+          <a routerLink="/" class="blue link">{{ title }}</a>
+        </h1>
+    </div>
+
+    <nav class="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
+      <a class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Register</a>
+      <a class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Login</a>
+      <a routerLink="create-listing" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">New Listing</a>
+    </nav>
+  </div>
 </header>
 <router-outlet></router-outlet>

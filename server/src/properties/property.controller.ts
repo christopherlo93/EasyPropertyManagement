@@ -18,4 +18,11 @@ controller.post('/getProperty', async (req, res) => {
   res.send(property);
 });
 
+controller.post('/createProperty', async (req, res) => {
+  const property = req.body.newProperty;
+  const id = await propertyService.createProperty(property);
+  console.log("Created Property with ID", id);
+  res.send({id: id});
+});
+
 export { controller as PropertyController };

@@ -12,6 +12,7 @@ export class PropertyDetailComponent implements OnInit {
   id: string;
   property: Property;
   units: Unit[];
+  p: number = 1;
 
   constructor(
     private route: ActivatedRoute,

@@ -45,4 +45,10 @@ export class PropertyService {
   ): Observable<Property> {
     return this.http.post<Property>(PROPERTIES_PATH + "/getProperty", {propertyId: id});
   }
+
+  public createProperty(
+    property: Property
+  ): Observable<any> {
+    return this.http.post<any>(PROPERTIES_PATH + "/createProperty", {newProperty: property});
+  }
 }

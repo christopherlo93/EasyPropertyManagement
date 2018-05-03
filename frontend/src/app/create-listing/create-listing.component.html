@@ -1,0 +1,75 @@
+<main class="overflow-auto bg-white bt b--black-10">
+  <section class="w-100 ph5-ns">
+    <div class="fl w-50 pa2">
+      <h2 class="f4">New Listing</h2>
+      <form #propertyForm="ngForm" (ngSubmit)="createProperty()" class="black-80">
+        <h3 class="f5">Property</h3>
+        <div class="measure">
+          <label for="name" class="f6 b db mb2">Property Name</label>
+          <input id="name" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          name="name" [(ngModel)]="name" required>
+          <label for="line1" class="f6 b db mb2">Address Line 1</label>
+          <input id="line1" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          name="line1" [(ngModel)]="address.line1" required>
+          <label for="line2" class="f6 b db mb2">Address Line 2 <span class="normal black-60">(optional)</span></label>
+          <input id="line2" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100"
+          name="line2" [(ngModel)]="address.line2">
+          <label for="city" class="f6 b db mb2">City</label>
+          <input id="city" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          name="city" [(ngModel)]="address.city" required>
+          <label for="province" class="f6 b db mb2">Province</label>
+          <input id="province" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          name="province" [(ngModel)]="address.province" required>
+          <label for="postalcode" class="f6 b db mb2">Postal Code</label>
+          <input id="postalcode" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          name="postalcode" [(ngModel)]="address.postalcode" required>
+        </div>
+        <p class="red">{{ propertyError }}</p>
+        <input type="submit" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
+      </form>
+    </div>    
+    <div class="fl w-50 pa2">
+        <h2 class="f4">Add Units to Property</h2>
+        <form #unitForm="ngForm" (ngSubmit)="createUnit()" class="black-80">
+          <div class="measure">
+            <label for="number" class="f6 b db mb2">Unit Number</label>
+            <input id="number" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+            [(ngModel)]="unit.number" required name="number">
+            <label for="floor" class="f6 b db mb2">Floor</label>
+            <input id="floor" type="number" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+            [(ngModel)]="unit.floor" required name="floor">
+            <label for="rent" class="f6 b db mb2">Rent</label>
+            <input id="rent" type="number" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+            [(ngModel)]="unit.rent" required name="rent">
+            <label class="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" 
+              [checked]="unit.vacant" (change)="unit.vacant = !unit.vacant"> Vacant? (Optional)</label>
+          </div>
+          <p class="red">{{ unitError }}</p>
+          <input type="submit" value="Add" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
+        </form>
+        <h3 class="f5">Units</h3>
+        <div class="overflow-auto">
+            <table class="f6 w-100 mw8 center" cellspacing="0">
+              <thead>
+                <tr>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Unit #</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Floor</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Rent</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Vacant?</th>
+                  <th class="fw6 bb b--black-20 tl pb3 pr3 bg-white">Remove</th>
+                </tr>
+              </thead>
+              <tbody class="lh-copy">
+                <tr *ngFor="let theUnit of units">
+                  <td class="pv3 pr3 bb b--black-20">{{ theUnit.number }}</td>
+                  <td class="pv3 pr3 bb b--black-20">{{ theUnit.floor }}</td>
+                  <td class="pv3 pr3 bb b--black-20">{{ theUnit.rent }}</td>
+                  <td class="pv3 pr3 bb b--black-20">{{ theUnit.vacant | vacant }}</td>
+                  <td class="pv3 pr3 bb b--black-20"><button (click)="removeUnit(theUnit)" class="button">Remove</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>    
+  </section>
+</main>

@@ -21,4 +21,10 @@ export class PropertyService {
     return this.dao.getProperty(id);
   }
 
+  public createProperty(
+    property: Property
+  ): Promise<string> {
+    return this.dao.insert(property);
+  }
+
 }
