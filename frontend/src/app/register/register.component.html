@@ -1,0 +1,22 @@
+<main class="overflow-auto bg-white bt b--black-10">
+  <section class="w-100 ph5-ns">
+    <h2 class="f4">Register a New User</h2>
+    <form #signUpForm="ngForm" (ngSubmit)="register()" class="black-80">
+        <div class="measure">
+          <label for="firstname" class="f6 b db mb2">First Name</label>
+          <input id="firstname" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          [(ngModel)]="user.firstname" required name="firstname">
+          <label for="lastname" class="f6 b db mb2">Last Name</label>
+          <input id="lastname" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          [(ngModel)]="user.lastname" required name="lastname">
+          <label for="email" class="f6 b db mb2">Email</label>
+          <input id="email" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          [(ngModel)]="user.email" required name="email">
+          <label for="password" class="f6 b db mb2">Password</label>
+          <input id="password" type="password" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
+          [(ngModel)]="user.password" required name="password">
+        </div>
+        <input type="submit" value="Register" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
+      </form>
+  </section>
+</main>

@@ -113,6 +113,10 @@ export class Collection<T> {
     return this.first(e => (e as any)._id === id);
   }
 
+  public async findByEmail(email: string): Promise<T> {
+    return this.first(e => (e as any).email === email);
+  }
+
   public async first(predicate: (elem: T) => boolean): Promise<T> {
     const data = await this.readFilestore();
     const one = data.filter(predicate);

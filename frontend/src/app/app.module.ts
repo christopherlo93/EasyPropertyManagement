@@ -13,6 +13,9 @@ import { VacantPipe } from './vacant.pipe';
 // By Michael Bromley. Src: https://www.npmjs.com/package/ngx-pagination
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CreateListingComponent } from './create-listing/create-listing.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { CreateListingComponent } from './create-listing/create-listing.componen
     PropertyDetailComponent,
     PropertiesComponent,
     VacantPipe,
-    CreateListingComponent
+    CreateListingComponent,
+    RegisterComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

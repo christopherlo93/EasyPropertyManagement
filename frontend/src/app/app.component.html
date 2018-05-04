@@ -7,9 +7,11 @@
     </div>
 
     <nav class="db dtc-ns v-mid w-100 tl tr-ns mt2 mt0-ns">
-      <a class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Register</a>
-      <a class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Login</a>
-      <a routerLink="create-listing" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">New Listing</a>
+      <a *ngIf="!userService.isAuth()" routerLink="register" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Register</a>
+      <a *ngIf="!userService.isAuth()" routerLink="login" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Login</a>
+      <a *ngIf="userService.isAuth()" routerLink="properties" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Listings</a>
+      <a *ngIf="userService.isAuth()" routerLink="create-listing" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">New Listing</a>
+      <a *ngIf="userService.isAuth()"  routerLink="/" (click)="userService.logout()" class="f6 fw6 hover-blue link black-70 mr2 mr3-m mr4-l dib">Logout</a>
     </nav>
   </div>
 </header>
