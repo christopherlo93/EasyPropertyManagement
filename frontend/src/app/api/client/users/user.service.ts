@@ -42,7 +42,7 @@ export class UserService {
     this.token = token;
   }
 
-  private getToken(): string {
+  public getToken(): string {
     if(!this.token) {
       this.token = localStorage.getItem('jwt');
     }

@@ -25,4 +25,6 @@ controller.post('/createProperty', async (req, res) => {
   res.send({id: id});
 });
 
+
+
 export { controller as PropertyController };

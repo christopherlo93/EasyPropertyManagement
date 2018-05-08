@@ -31,7 +31,7 @@ controller.post('/authUser', async(req, res) => {
             email: dbUser.email,
             name: dbUser.firstname,
             exp: expiry.getTime() / 1000
-        }, process.env.MYAPIKEY);
+        }, process.env.AUTHAPIKEY);
         res.send({token: jsonToken});
     } else {
         res.status(401).send({error: "Authentication Failed"});
