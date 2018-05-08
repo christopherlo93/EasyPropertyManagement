@@ -16,6 +16,7 @@ import { CreateListingComponent } from './create-listing/create-listing.componen
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
+import { UserService } from './api/client/users/user.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,9 @@ import { HomeComponent } from './home/home.component';
     NgxPaginationModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
