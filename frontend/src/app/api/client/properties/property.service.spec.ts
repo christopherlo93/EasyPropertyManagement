@@ -2,6 +2,9 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { inject, TestBed } from '@angular/core/testing';
 
 import { PropertyService } from './property.service';
+import { UserService } from '../users/user.service';
+import { Router } from '@angular/router';
+
 
 describe('PropertyService', () => {
 
@@ -11,10 +14,14 @@ describe('PropertyService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
-        HttpClientTestingModule,
+        HttpClientTestingModule
       ],
       providers: [
-        PropertyService
+        PropertyService,
+        UserService,
+        { provide: Router,
+          useClass: class { navigate = jasmine.createSpy("navigate"); }
+        }
       ]
     });
 
