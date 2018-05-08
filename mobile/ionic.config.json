@@ -1,0 +1,8 @@
+{
+  "name": "easypropertymanagement",
+  "app_id": "cd25e729",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
