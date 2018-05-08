@@ -16,6 +16,7 @@ controller.post('/createUser', async (req, res) => {
     } else {
         user.salt = crypto.randomBytes(16).toString('hex');
         user.hash = crypto.pbkdf2Sync(user.password, user.salt, 1000, 64, 'sha512').toString('hex');
+        delete user.password;
         const id = await userService.createUser(user);
         console.log("Created user with ID", id);
         res.send({id: id});
