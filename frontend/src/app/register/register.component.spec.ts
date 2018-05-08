@@ -11,22 +11,21 @@ describe('RegisterComponent', () => {
   let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async(() => {
-    beforeEach(async(() => {
-      TestBed.configureTestingModule({
-        imports: [ 
-          FormsModule, 
-          HttpClientTestingModule
-        ],
-        declarations: [ 
-          RegisterComponent
-        ],
-        providers: [ 
-          UserService,
-          { provide: Router,
-            useClass: class { navigate = jasmine.createSpy("navigate"); }
-          }
-        ]
-      })
+    TestBed.configureTestingModule({
+      imports: [ 
+        FormsModule, 
+        HttpClientTestingModule
+      ],
+      declarations: [ 
+        RegisterComponent
+      ],
+      providers: [ 
+        UserService,
+        { provide: Router,
+          useClass: class { navigate = jasmine.createSpy("navigate"); }
+        }
+      ]
+    })
     .compileComponents();
   }));
 
