@@ -10,6 +10,9 @@ import { UserController } from './users/user.controller';
 
 const app = express();
 
+/**
+ * Uses expressjwt middleware to secure API paths
+ */
 const auth = expressjwt({
     secret: process.env.AUTHAPIKEY
 });

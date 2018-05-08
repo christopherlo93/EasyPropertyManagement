@@ -113,6 +113,10 @@ export class Collection<T> {
     return this.first(e => (e as any)._id === id);
   }
 
+  /**
+   * Added function to find a user by email
+   * @param email
+   */
   public async findByEmail(email: string): Promise<T> {
     return this.first(e => (e as any).email === email);
   }
