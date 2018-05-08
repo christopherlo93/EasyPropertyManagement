@@ -7,7 +7,7 @@
         <div class="measure">
           <label for="name" class="f6 b db mb2">Property Name</label>
           <input id="name" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
-          name="name" [(ngModel)]="name" required>
+          name="name" [(ngModel)]="address.name" required>
           <label for="line1" class="f6 b db mb2">Address Line 1</label>
           <input id="line1" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
           name="line1" [(ngModel)]="address.line1" required>
@@ -24,7 +24,7 @@
           <input id="postalcode" type="text" class="input-reset ba b--black-20 pa2 mb2 db w-100" 
           name="postalcode" [(ngModel)]="address.postalcode" required>
         </div>
-        <p class="red">{{ propertyError }}</p>
+        <p class="red" *ngIf="errorMessages.property">{{ errorMessages.property }}</p>
         <input type="submit" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
       </form>
     </div>    
@@ -44,7 +44,7 @@
             <label class="pa0 ma0 lh-copy f6 pointer"><input type="checkbox" 
               [checked]="unit.vacant" (change)="unit.vacant = !unit.vacant"> Vacant? (Optional)</label>
           </div>
-          <p class="red">{{ unitError }}</p>
+          <p class="red" *ngIf="errorMessages.unit">{{ errorMessages.unit }}</p>
           <input type="submit" value="Add" class="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6">
         </form>
         <h3 class="f5">Units</h3>

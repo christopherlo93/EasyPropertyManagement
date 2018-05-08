@@ -9,9 +9,24 @@ import { Unit, Property, PropertyService } from '../api/client/properties/proper
 })
 export class PropertyDetailComponent implements OnInit {
 
+  /**
+   * ID of the current property
+   */
   id: string;
+
+  /**
+   * Property object
+   */
   property: Property;
+
+  /**
+   * Array of units in the property
+   */
   units: Unit[];
+
+  /**
+   * Counter for page number
+   */
   p: number = 1;
 
   constructor(
@@ -20,6 +35,9 @@ export class PropertyDetailComponent implements OnInit {
   ) { 
   }
 
+  /**
+   * On init, get the ID from the navigation parameters and load the units
+   */
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.id = params['id'];
@@ -27,6 +45,9 @@ export class PropertyDetailComponent implements OnInit {
     this.loadUnits();
   }
 
+  /**
+   * Get the property from the database and load the units.
+   */
   loadUnits() {
     this.propertyService.getProperty(this.id)
     .subscribe(property => {

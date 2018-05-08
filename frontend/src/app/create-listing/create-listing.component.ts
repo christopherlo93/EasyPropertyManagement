@@ -10,32 +10,46 @@ import { Router } from '@angular/router';
 })
 export class CreateListingComponent implements OnInit {
 
+  /**
+   * Units in the property
+   */
   units: Unit[] = [];
+
+  /**
+   * Unit model
+   */
   unit: Unit = {
     number: "",
-    floor: 0,
-    rent: 0,
+    floor: null,
+    rent: null,
     vacant: true
   };
 
-  unitError: string = "";
-  propertyError: string = "";
+  /**
+   * Validation error messages
+   */
+  errorMessages: any = {
+    unit: "",
+    property: ""
+  }
 
+  /**
+   * Address model
+   */
   address: {
+    name: string,
     line1: string,
     line2?: string,
     city: string,
     province: string,
     postalcode: string
   } = {
+    name: "",
     line1: "",
     city: "",
     province: "",
     postalcode: ""
   };
-
-  name: string = "";
-  propId: any;
 
   constructor(
     private propertyService: PropertyService,
@@ -45,44 +59,57 @@ export class CreateListingComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Validates the unit information user submitted and pushes it on to an array of Units
+   */
   createUnit() {
     if(this.validateUnit()) {
       this.units.push(this.unit);
       this.unit = {
         number: "",
-        floor: 0,
-        rent: 0,
+        floor: null,
+        rent: null,
         vacant: true
       }
-      this.unitError = "";
+      this.errorMessages.unit = "";
     }
   }
 
+  /**
+   * Validates user fields for adding a unit
+   */
   validateUnit() {
     if(this.unit.number == "") {
-      this.unitError = "Unit number cannot be empty";
+      this.errorMessages.unit = "Unit number cannot be empty";
       return false;
     }
 
     if(this.unit.floor < 0) {
-      this.unitError = "Floor must be greater or equal to 0";
+      this.errorMessages.unit = "Floor must be greater or equal to 0";
       return false;
     }
 
     if(this.unit.rent <= 0) {
-      this.unitError = "Rent must be greater than 0";
+      this.errorMessages.unit = "Rent must be greater than 0";
       return false;
     }
 
     return true;
   }
 
+  /**
+   * Deletes an unit from the array
+   * @param unit Unit added to the array that will be deleted
+   */
   removeUnit(unit) {
     this.units = this.units.filter(unitObj => {
       return unitObj !== unit;
     });
   }
 
+  /**
+   * Adds a property in the backend database
+   */
   createProperty() {
     if(this.validatePropertyFields()) {
       let fullAddress = this.address.line1 + ", ";
@@ -93,7 +120,7 @@ export class CreateListingComponent implements OnInit {
         + this.address.postalcode;
 
       let prop: Property = {
-        name: this.name,
+        name: this.address.name,
         address: fullAddress,
         units: this.units
       }
@@ -105,19 +132,22 @@ export class CreateListingComponent implements OnInit {
     }
   }
 
+  /**
+   * Validates user fields for the property and checks if the units array is empty
+   */
   validatePropertyFields() {
-    if(!this.name) {
-      this.propertyError = "Please enter a property name";
+    if(!this.address.name) {
+      this.errorMessages.property = "Please enter a property name";
       return false;
     }
 
     if(!this.address.line1 || !this.address.city || !this.address.postalcode || !this.address.province) {
-      this.propertyError = "Please complete your address";
+      this.errorMessages.property = "Please complete your address";
       return false;
     }
 
     if(this.units.length == 0) {
-      this.propertyError = "Please add at least one unit to this property";
+      this.errorMessages.property = "Please add at least one unit to this property";
       return false;
     }
 

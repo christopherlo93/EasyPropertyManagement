@@ -9,6 +9,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
+  /**
+   * User credentials model
+   */
   user: {
     email: string,
     password: string
@@ -25,12 +28,22 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  /**
+   * Authenticates user with the backend, then navigate user to property listings page
+   */
   login() {
     this.userService.authUser(this.user)
     .subscribe(token => {
       this.userService.saveToken(token.token);
       this.router.navigateByUrl('properties');
     });
+  }
+
+  /**
+   * Validates login credentials: Email in the correct format
+   */
+  validateFields() {
+    // TODO
   }
 
 }
